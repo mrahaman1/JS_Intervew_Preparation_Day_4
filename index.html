@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Interview Preparation Day-4</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Interview Preparation Day-4</h1>
+   
+            <h3>1.Explain Local Scope, Block Scope, Functional Scope and Scope Chain in javascript</h3>
+            <p>In Javascript we have 3 types of scopes.They are:<br><li>Global Scope</li><li>Local or Function Scope</li><li>Block Scope</li><br>Global Scope: Variables Which are declared at the top of a program or ouside of a function are considered as Global Scope  Variables.<br>Local or Function Scope: Variables which are declared inside a function can have local or function scope.These variables can be accessed with in the function only.<br>Block Scope: Variables which are declared using let and const have block scope.Block Scope tells us that any variable declared inside a block {}, can be accessed with in that block and cannot be acccessed outside of it.<br>Scope Chain:Javascipt engine uses scope to find variables and functions for memory allocation and for code execution.</p>
+            <pre>
+            1.Global Scope:
+
+                var a= 10;
+                function fun(){
+                    console.log("Hello");
+                }
+                fun();
+
+            2.Local or Function Scope:
+
+                function add(){
+                    var b=24;
+                    console.log(b);
+                }
+
+            3.Block Scope:
+
+                {
+                    let abc=123;
+                    console.log(abc);
+                }
+            </pre>
+        <br>
+       
+            <h3>2.What is difference between null and undefined ?</h3>
+            <p>Undefined: Variables which are declared but not assigned with any value then we get output as undefined.<br>Null: Null is an assignment value.It can be assigned to a value which represents of no value.</p>
+            <pre>
+                var x;
+                console.log(x);
+                
+                var y=null;
+                console.log(y);
+            </pre>
+            <br>
+        
+            <h3>3.What is an event loop and call stack</h3>
+            <p>Event Loop & call stack: A call stack is mechanism for an intrepreter to keep track of its place in ascript to call multiple functions-what function is currently running and what to be called within that function.<br>The Event loop is constantly running process that monitors both are callback queue and call stack.All the web apis functions like setTimeout ,settimeInterval ,fetch calls etc..will not be directly executed inside the execution context,Firstly,they will be moved to the callback queue and then the moment call stack gets empty these functions will be pushed to call stck from call back queue by event loop.If the call stack is not empty event loop waits until it is empty and places the next function from callback queue to the callstack.</p>
+        <br>
+       
+            <h3>4.What are promises and why do we need them?</h3>
+            <p>
+                Promises are used to handle the asynchrous operations in Javascipt.They are easy to manage when dealing with the multiple asynchronous operations compare to callback hells and events.Multiple callback functions would create callback hell that leads to unmanageble code and it is also not easy for any user to handle multiple callbacks at the same time.So, promises are the ideal  choice for handling asynchronous operations in simplest manner.A promise is in one of these states.They are :<li>Pending State:Intial state,neither fulfilled nor rejected.<li>fulfilled:The operation is fulfilled</li><li>Rejected:The operation is failed.<br>Benifits Of Promises:<li>Code Readability.</li><li>Better handling of asynchrous operations</li><li> Better flow of control in asyncronous logic.</li>
+            </p>
+            <pre>
+                var promise = new Promise(function(resolve,reject){
+                    const x="promise1";
+                    const y="promise2";
+                    if(x===y){
+                        resolve();
+                    }
+                    else{
+                        reject();
+                    }
+                })
+                promise.then(()=>{console.log("Success")}).catch(()=>{console.log("Failed")})
+            </pre>
+       <br>
+       
+            <h3>5.What is promise chaining</h3>
+            <p>The Process of executing sequence of asynchronous tasks one after another using promises is known as promise chaining.</p>
+            <pre>
+                new Promise(function(resolve,reject){
+                    setTimeout(()=>{resolve(1)},1000);
+                }).then(function(result){
+                    console.log(result);
+                    return result * 2;
+                }).then(function(result){
+                    console.log(result);
+                    return result * 4;
+                })
+                .then(function(result){
+                    console.log(result);
+                    return result * 6;
+                })
+            </pre>
+        <br>
+        
+            <h3>6.What are pure functions?</h3>
+            <p>Pure function is a function that always return the same result if the same arguments are passed.</p>
+            <pre>
+                function calculation(num){
+                    console.log(num * 5);
+                }
+                calculation(5);
+            </pre>
+        
+  
+    <script src="./main.js"></script>
+</body>
+</html>
